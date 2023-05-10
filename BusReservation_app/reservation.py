@@ -1,4 +1,8 @@
 import streamlit as st
+import os
+
+diretorio_atual = os.getcwd()
+caminho_arquivo = os.path.join(diretorio_atual, 'tickets.txt')
 
 def realizar_reserva(input_name, input_numBus, num_ticket):
     #Formatar a reserva como uma string separada por linhas
