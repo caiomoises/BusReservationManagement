@@ -13,7 +13,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
     reserva = f'Nome do passageiro: {input_name}\n' \
               f'Número do ônibus selecionado: {input_numBus}\n' \
               f'Número do ticket: {num_ticket}\n'
-    with open(file_path, 'rb') as f:
+    with open(file_path, 'r') as f:
         result = chardet.detect(f.read())
     encoding = result['encoding']
 
@@ -37,7 +37,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
         for reserva in reservas:
             file.write(reserva + '\n')
 def excluir_reserva(nome):
-    with open(file_path, 'rb') as f:
+    with open(file_path, 'r') as f:
         result = chardet.detect(f.read())
     encoding = result['encoding']
     with open(file_path, 'r', encoding=encoding) as file:
@@ -59,7 +59,7 @@ def excluir_reserva(nome):
     else:
         st.write(f"Não foi encontrada uma reserva para {nome}.")
 def listar_reservas():
-    with open(file_path, 'rb') as f:
+    with open(file_path, 'r') as f:
         result = chardet.detect(f.read())
     encoding = result['encoding']
     with open(file_path, 'r', encoding=encoding) as file:
@@ -77,7 +77,7 @@ def listar_reservas():
             st.write(f"Número do ticket: {num_ticket}")
             st.write('---')  
 def buscar_reservas(nome):
-    with open(file_path, 'rb') as f:
+    with open(file_path, 'r') as f:
         result = chardet.detect(f.read())
     encoding = result['encoding']
     with open(file_path, 'r', encoding=encoding) as file:
@@ -101,7 +101,7 @@ def buscar_reservas(nome):
             st.write(f"Número do ticket: {reserva[2]}")
             st.write('---')
 def editar_reserva(nome, new_bus,new_num_ticket):
-    with open(file_path, 'rb') as f:
+    with open(file_path, 'r') as f:
         result = chardet.detect(f.read())
     encoding = result['encoding']
     with open(file_path, 'r', encoding=encoding) as file:
