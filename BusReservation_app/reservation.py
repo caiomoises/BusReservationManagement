@@ -7,15 +7,14 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Concatena o diretório atual com o nome do arquivo
 file_path = os.path.join(current_dir, 'tickets.txt')
 
-with open(file_path, 'rb') as f:
-    result = chardet.detect(f.read())
-encoding = result['encoding']
-
 def realizar_reserva(input_name, input_numBus, num_ticket):
     #Formatar a reserva como uma string separada por linhas
     reserva = f'Nome do passageiro: {input_name}\n' \
               f'Número do ônibus selecionado: {input_numBus}\n' \
               f'Número do ticket: {num_ticket}\n'
+    with open(file_path, 'rb') as f:
+        result = chardet.detect(f.read())
+    encoding = result['encoding']
 
     #Ler as reservas existentes do arquivo
     reservas = []
