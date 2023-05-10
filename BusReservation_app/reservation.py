@@ -7,6 +7,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Concatena o diretório atual com o nome do arquivo
 file_path = os.path.join(current_dir, 'tickets.txt')
 
+with open(file_path, 'rb') as f:
+    result = chardet.detect(f.read())
+encoding = result['encoding']
+
 def realizar_reserva(input_name, input_numBus, num_ticket):
     #Formatar a reserva como uma string separada por linhas
     reserva = f'Nome do passageiro: {input_name}\n' \
@@ -15,7 +19,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
 
     #Ler as reservas existentes do arquivo
     reservas = []
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
         reserva_atual = ''
         for line in file:
@@ -33,7 +37,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
         for reserva in reservas:
             file.write(reserva + '\n')
 def excluir_reserva(nome):
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
     
     with open(file_path, 'w') as file:
@@ -52,7 +56,7 @@ def excluir_reserva(nome):
     else:
         st.write(f"Não foi encontrada uma reserva para {nome}.")
 def listar_reservas():
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
     
     if len(lines) == 0:
@@ -67,7 +71,7 @@ def listar_reservas():
             st.write(f"Número do ticket: {num_ticket}")
             st.write('---')  
 def buscar_reservas(nome):
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
 
     reservas_encontradas = []
@@ -88,7 +92,7 @@ def buscar_reservas(nome):
             st.write(f"Número do ticket: {reserva[2]}")
             st.write('---')
 def editar_reserva(nome, new_bus,new_num_ticket):
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
 
     with open(file_path, 'w') as file:
