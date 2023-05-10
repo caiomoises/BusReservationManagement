@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import chardet
 
 # Obtém o diretório atual
 current_dir = os.path.dirname(os.path.abspath(__file__))
