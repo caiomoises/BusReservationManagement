@@ -15,7 +15,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
 
     #Ler as reservas existentes do arquivo
     reservas = []
-    with open('tickets.txt', 'r') as file:
+    with open('file_path', 'r') as file:
         reserva_atual = ''
         for line in file:
             line = line.strip()
@@ -28,14 +28,14 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
     reservas.append(reserva) #Adicionar nova reserva à lista
     reservas.sort() #Ordenar a lista em ordem alfabética dos nomes
 
-    with open('tickets.txt', 'w') as file: #Escrever as reservas ordenadas de volta ao arquivo
+    with open('file_path', 'w') as file: #Escrever as reservas ordenadas de volta ao arquivo
         for reserva in reservas:
             file.write(reserva + '\n')
 def excluir_reserva(nome):
-    with open('tickets.txt', 'r') as file:
+    with open('file_path', 'r') as file:
         lines = file.readlines()
     
-    with open('tickets.txt', 'w') as file:
+    with open('file_path', 'w') as file:
         deleted = False
         for i in range(0, len(lines), 4):
             if lines[i].strip() == f'Nome do passageiro: {nome}':
@@ -66,7 +66,7 @@ def listar_reservas():
             st.write(f"Número do ticket: {num_ticket}")
             st.write('---')  
 def buscar_reservas(nome):
-    with open('tickets.txt', 'r') as file:
+    with open('file_path', 'r') as file:
         lines = file.readlines()
 
     reservas_encontradas = []
@@ -87,10 +87,10 @@ def buscar_reservas(nome):
             st.write(f"Número do ticket: {reserva[2]}")
             st.write('---')
 def editar_reserva(nome, new_bus,new_num_ticket):
-    with open('tickets.txt', 'r') as file:
+    with open('file_path', 'r') as file:
         lines = file.readlines()
 
-    with open('tickets.txt', 'w') as file:
+    with open('file_path', 'w') as file:
         edited = False
         for i in range(0, len(lines), 4):
             if lines[i].strip() == f'Nome do passageiro: {nome}':
