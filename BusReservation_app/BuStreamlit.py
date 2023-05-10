@@ -14,7 +14,7 @@ selecionar_pagina = st.sidebar.selectbox('Escolha a opção: ', ['Pagina inicial
 
 if selecionar_pagina == 'Pagina inicial':
     st.title('Bem vindos ao seu app de reserva de ônibus')
-    image = Image.open('logo.png')
+    image = ('https://raw.githubusercontent.com/caiomoises/BusReservationManagement/main/BusReservation_app/logo.png')
     # Centraliza a imagem usando uma caixa de layout
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
