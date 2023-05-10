@@ -68,16 +68,18 @@ def listar_reservas():
     if len(lines) == 0:
         st.write("Não há reservas registradas.")
     else:
-        for line in lines:
-            line = line.strip()
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
             if line.startswith('Nome do passageiro:'):
                 nome = line.split(': ')[1]
-                num_bus = next(lines).strip().split(': ')[1]
-                num_ticket = next(lines).strip().split(': ')[1]
+                num_bus = lines[i+1].strip().split(': ')[1]
+                num_ticket = lines[i+2].strip().split(': ')[1]
                 st.write(f"Nome do passageiro: {nome}")
                 st.write(f"Número do ônibus selecionado: {num_bus}")
                 st.write(f"Número do ticket: {num_ticket}")
-                st.write('---')  
+                st.write('---')
+            i += 1  
 def buscar_reservas(nome):
     with open(file_path, 'rb') as f:
         result = chardet.detect(f.read())
