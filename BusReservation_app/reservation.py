@@ -1,8 +1,11 @@
 import streamlit as st
 import os
 
-diretorio_atual = os.getcwd()
-caminho_arquivo = os.path.join(diretorio_atual, 'tickets.txt')
+# Obtém o diretório atual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Concatena o diretório atual com o nome do arquivo
+file_path = os.path.join(current_dir, 'tickets.txt')
 
 def realizar_reserva(input_name, input_numBus, num_ticket):
     #Formatar a reserva como uma string separada por linhas
