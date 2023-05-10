@@ -59,7 +59,10 @@ def excluir_reserva(nome):
     else:
         st.write(f"Não foi encontrada uma reserva para {nome}.")
 def listar_reservas():
-    with open(file_path, 'r') as file:
+    with open(file_path, 'ab') as f:
+        result = chardet.detect(f.read())
+    encoding = result['encoding']
+    with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
     
     if len(lines) == 0:
