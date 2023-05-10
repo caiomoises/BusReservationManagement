@@ -33,7 +33,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
     reservas.append(reserva) #Adicionar nova reserva à lista
     reservas.sort() #Ordenar a lista em ordem alfabética dos nomes
 
-    with open(file_path, 'w') as file: #Escrever as reservas ordenadas de volta ao arquivo
+    with open(file_path, 'w', encoding=encoding) as file: #Escrever as reservas ordenadas de volta ao arquivo
         for reserva in reservas:
             file.write(reserva + '\n')
 def excluir_reserva(nome):
@@ -43,7 +43,7 @@ def excluir_reserva(nome):
     with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
     
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding=encoding) as file:
         deleted = False
         for i in range(0, len(lines), 4):
             if lines[i].strip() == f'Nome do passageiro: {nome}':
@@ -107,7 +107,7 @@ def editar_reserva(nome, new_bus,new_num_ticket):
     with open(file_path, 'r', encoding=encoding) as file:
         lines = file.readlines()
 
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding=encoding) as file:
         edited = False
         for i in range(0, len(lines), 4):
             if lines[i].strip() == f'Nome do passageiro: {nome}':
