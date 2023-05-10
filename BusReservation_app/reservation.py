@@ -33,7 +33,7 @@ def realizar_reserva(input_name, input_numBus, num_ticket):
     reservas.append(reserva) #Adicionar nova reserva à lista
     reservas.sort() #Ordenar a lista em ordem alfabética dos nomes
 
-    with open(file_path, 'ab') as file: #Escrever as reservas ordenadas de volta ao arquivo
+    with open(file_path, 'w') as file: #Escrever as reservas ordenadas de volta ao arquivo
         for reserva in reservas:
             file.write(reserva + '\n')
 def excluir_reserva(nome):
